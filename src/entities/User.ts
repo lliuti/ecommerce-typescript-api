@@ -9,7 +9,7 @@ import {
 } from "typeorm";
 
 @Entity("users")
-export class User {
+class User {
   @PrimaryColumn()
   readonly id: string;
 
@@ -37,3 +37,5 @@ export class User {
     }
   }
 }
+
+export { User };
