@@ -5,7 +5,7 @@ import { IAuthenticateUserDTO } from "../../dtos/IAuthenticateUserDTO";
 import { UserRepository } from "../../repositories/UserRepository";
 
 class AuthenticateUserUseCase {
-  async execute({ email, password }: IAuthenticateUserDTO) {
+  async execute({ email, password }: IAuthenticateUserDTO): Promise<string> {
     const userRepository = getCustomRepository(UserRepository);
     const user = await userRepository.findOne({ email });
 
