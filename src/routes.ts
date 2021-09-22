@@ -1,5 +1,5 @@
 import { Router } from "express";
-import { ensureAuthenticated } from "./database/middlewares/ensureAuthenticated";
+import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
 import { AuthenticateUserController } from "./useCases/AuthenticateUser/AuthenticateUserController";
 import { CreateProductController } from "./useCases/CreateProduct/CreateProductController";
 import { CreateUserController } from "./useCases/CreateUser/CreateUserController";
