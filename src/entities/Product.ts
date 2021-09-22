@@ -10,6 +10,7 @@ import {
   UpdateDateColumn,
 } from "typeorm";
 import { User } from "./User";
+import { ProductStatusEnum } from "../enums/ProductStatusEnum";
 
 @Entity("products")
 class Product {
@@ -28,6 +29,9 @@ class Product {
   @Column()
   owner_id: string;
 
+  @Column()
+  status: string;
+
   @JoinColumn({ name: "owner_id" })
   @OneToOne(() => User)
   ownerId: User;
@@ -41,6 +45,10 @@ class Product {
   constructor() {
     if (!this.id) {
       this.id = uuid();
+    }
+
+    if (!this.status) {
+      this.status = ProductStatusEnum.available;
     }
   }
 }
