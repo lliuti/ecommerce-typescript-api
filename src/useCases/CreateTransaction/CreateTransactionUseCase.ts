@@ -23,14 +23,6 @@ class CreateTransactionUseCase {
       throw new Error("Sold out product");
     }
 
-    console.log({
-      product_id,
-      owner_id: product.owner_id,
-      price: product.price,
-      buyer_id,
-      method,
-    });
-
     const transaction = transactionRepository.create({
       product_id,
       owner_id: product.owner_id,
