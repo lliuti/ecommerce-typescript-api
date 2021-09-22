@@ -1,5 +1,6 @@
 import { getCustomRepository } from "typeorm";
 import { ICreateTransactionDTO } from "../../dtos/ICreateTransactionDTO";
+import { ProductStatusEnum } from "../../enums/ProductStatusEnum";
 import { ProductRepository } from "../../repositories/ProductRepository";
 import { TransactionRepository } from "../../repositories/TransactionRepository";
 
@@ -16,6 +17,10 @@ class CreateTransactionUseCase {
 
     if (buyer_id === product.owner_id) {
       throw new Error("Owner cannot buy its own products");
+    }
+
+    if (product.status === ProductStatusEnum.sold) {
+      throw new Error("Sold out product");
     }
 
     console.log({
@@ -35,6 +40,10 @@ class CreateTransactionUseCase {
     });
 
     await transactionRepository.save(transaction);
+
+    product.status = ProductStatusEnum.sold;
+
+    await productRepository.save(product);
   }
 }
 
