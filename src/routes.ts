@@ -2,6 +2,7 @@ import { Router } from "express";
 import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
 import { AuthenticateUserController } from "./useCases/AuthenticateUser/AuthenticateUserController";
 import { CreateProductController } from "./useCases/CreateProduct/CreateProductController";
+import { CreateTransactionController } from "./useCases/CreateTransaction/CreateTransactionController";
 import { CreateUserController } from "./useCases/CreateUser/CreateUserController";
 import { ListProductController } from "./useCases/ListProduct/ListProductController";
 import { ListProductByUserController } from "./useCases/ListProductByUser/ListProductByUserController";
@@ -15,6 +16,7 @@ const authenticateUserController = new AuthenticateUserController();
 const createProductController = new CreateProductController();
 const listProductController = new ListProductController();
 const listProductByUserController = new ListProductByUserController();
+const createTransactionController = new CreateTransactionController();
 
 routes.get("/users", listUserController.handle);
 routes.post("/users", createUserController.handle);
@@ -27,5 +29,11 @@ routes.get(
   listProductByUserController.handle
 );
 routes.post("/products", ensureAuthenticated, createProductController.handle);
+
+routes.post(
+  "/products/:id/buy",
+  ensureAuthenticated,
+  createTransactionController.handle
+);
 
 export { routes };
