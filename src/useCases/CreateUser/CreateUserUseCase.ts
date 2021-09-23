@@ -45,7 +45,7 @@ class CreateUserUseCase {
       from: process.env.SMTP_EMAIL_SENDER,
       to: user.email,
       subject: "eCommerce Typescript - Confirmation",
-      html: `<p>Please <b>confirm</b> your account by clicking on this <a href="http://localhost:3000/users/${user.id}/confirmation"}/></a></p>`,
+      html: `<p>Please <b>confirm</b> your account by clicking on this <a href="http://localhost:3000/users/${user.id}/confirmation"}/>link</a></p>`,
     });
   }
 }
