@@ -2,6 +2,7 @@ import { compare } from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { getCustomRepository } from "typeorm";
 import { IAuthenticateUserDTO } from "../../dtos/IAuthenticateUserDTO";
+import { ConfirmationEmailRepository } from "../../repositories/ConfirmationEmailRepository";
 import { UserRepository } from "../../repositories/UserRepository";
 
 class AuthenticateUserUseCase {
@@ -19,6 +20,18 @@ class AuthenticateUserUseCase {
 
     if (!passwordDoesMatch) {
       throw new Error("Invalid Email/Password.");
+    }
+
+    const confirmationEmailRepository = getCustomRepository(
+      ConfirmationEmailRepository
+    );
+
+    const confirmationEmail = await confirmationEmailRepository.findOne({
+      user_id: user.id,
+    });
+
+    if (!confirmationEmail || confirmationEmail.confirmed_email === false) {
+      throw new Error("Email not confirmed.");
     }
 
     const token = jwt.sign(

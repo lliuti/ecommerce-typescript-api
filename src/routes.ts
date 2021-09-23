@@ -1,6 +1,7 @@
 import { Router } from "express";
 import { ensureAuthenticated } from "./middlewares/ensureAuthenticated";
 import { AuthenticateUserController } from "./useCases/AuthenticateUser/AuthenticateUserController";
+import { ConfirmUserEmailController } from "./useCases/ConfirmUserEmail/ConfirmUserEmailController";
 import { CreateProductController } from "./useCases/CreateProduct/CreateProductController";
 import { CreateTransactionController } from "./useCases/CreateTransaction/CreateTransactionController";
 import { CreateUserController } from "./useCases/CreateUser/CreateUserController";
@@ -17,10 +18,12 @@ const createProductController = new CreateProductController();
 const listProductController = new ListProductController();
 const listProductByUserController = new ListProductByUserController();
 const createTransactionController = new CreateTransactionController();
+const confirmUserEmailController = new ConfirmUserEmailController();
 
 routes.get("/users", listUserController.handle);
 routes.post("/users", createUserController.handle);
 routes.post("/auth", authenticateUserController.handle);
+routes.get("/users/:id/confirmation", confirmUserEmailController.handle);
 
 routes.get("/products", ensureAuthenticated, listProductController.handle);
 routes.get(
