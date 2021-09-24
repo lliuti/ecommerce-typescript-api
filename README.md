@@ -4,15 +4,11 @@ An eCommerce API using Typescript + PostgreSQL with TypeORM
 
 <br>
 
----
-
 ## Description
 
 An API that allows Users to create and buy Products
 
 <br>
-
----
 
 ## Entities
 
