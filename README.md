@@ -102,20 +102,20 @@ updated_at: date
 
 ## Functional Requirements
 
-- [x] Usuário deve poder se cadastrar na plataforma
-- [x] Usuários devem ser autenticados (login) na plataforma
-- [x] Usuário deve poder cadastrar produtos na plataforma
-- [x] Usuário deve poder ver todos os produtos cadastrados
-- [x] Usuário deve poder ver todos os produtos de um usuário especifico
-- [x] Usuário pode comprar (criar transacao) um produto cadastrado
-- [x] Usuário deve receber email de confirmacao ao criar conta
-- [x] Usuário deve poder confirmar o email
+- [x] Users must be able to be registered
+- [x] Users must be authenticateds (login)
+- [x] Users may register Products
+- [x] Users may see all stored Products
+- [x] Users may be able to see all products from a specific User
+- [x] Users may be able to buy a Product
+- [x] Users must receive an confirmation email when registered
+- [x] Users must be able to confirm their email
 
 ## Business Rules
 
-- [x] Usuários não podem se cadastrar com um e-mail ou documento já cadastrado
-- [x] Senhas dos usuários não devem ser exibidas nos retornos
-- [x] Usuários não podem cadastrar produtos se estiverem deslogados
-- [x] Usuário não pode comprar um produto dele mesmo
-- [x] Quando uma transacao for feita, o produto comprado deve ter seu _status_ alterado para _sold_
-- [x] Usuário não pode fazer login se não tiver confirmado o email
+- [x] Users cannot be registered with an already existing document/email
+- [x] User's password can not be returned
+- [x] Users cant register Products when unauthenticated
+- [x] Users cant buy their own Products
+- [x] When a User buy a Product, the Product must have its _status_ changed to _sold_
+- [x] Users cant be authenticated without confirming their email
