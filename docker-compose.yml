@@ -1,0 +1,31 @@
+version: "3.7"
+
+services:
+  postgres:
+    image: postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=$TYPEORM_USERNAME
+      - POSTGRES_PASSWORD=$TYPEORM_PASSWORD
+      - POSTGRES_DB=$TYPEORM_DATABASE
+    volumes:
+      - pgdata:/data/postgres
+    ports:
+      - "5432:5432"
+
+  app:
+    build: .
+    depends_on:
+      - postgres
+    volumes:
+      - .:/usr/app
+    ports:
+      - "3000:3000"
+      - "9229:9229"
+    environment:
+      TYPEORM_HOST: postgres
+    command: ["./wait-for-it.sh", "postgres:5432", "--", "npm", "run", "dev"]
+
+volumes:
+  pgdata:
+    driver: local
