@@ -15,6 +15,7 @@ services:
 
   app:
     build: .
+    entrypoint: ["/bin/bash", "./entrypoint.sh"]
     depends_on:
       - postgres
     volumes:
