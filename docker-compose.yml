@@ -15,7 +15,6 @@ services:
 
   app:
     build: .
-    entrypoint: ["/bin/bash", "./entrypoint.sh"]
     env_file: .env
     depends_on:
       - postgres
