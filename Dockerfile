@@ -1,12 +1,10 @@
 FROM node
 
-WORKDIR /usr/app
+WORKDIR /app
 
-COPY package.json .
+COPY . .
 
 RUN npm install
-
-COPY . /usr/app
 
 COPY wait-for-it.sh .
 
