@@ -8,6 +8,18 @@ An eCommerce API using Typescript + PostgreSQL with TypeORM
 
 An API that allows Users to create and buy Products
 
+## How to run
+
+To run this API all you will need to have installed is: docker
+
+After cloning this repository and entering its directory, run the command:
+
+```
+docker compose up
+```
+
+---
+
 <br>
 
 ## Entities
