@@ -2,6 +2,8 @@
 
 An eCommerce API using Typescript + PostgreSQL with TypeORM
 
+![Catalog](https://image.freepik.com/free-vector/catalogue-concept-illustration_114360-2032.jpg)
+
 <br>
 
 ## Description
